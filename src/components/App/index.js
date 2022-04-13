@@ -12,7 +12,7 @@ import PokemonCard from '../PokemonCard';
 import { Container } from './styles';
 
 export default function App() {
-  const [pokemon, setPokemon] = useState([]);
+  const [allPokemons, setAllPokemons] = useState([]);
 
   useEffect(() => {
     async function loadPokemons() {
@@ -24,7 +24,7 @@ export default function App() {
           await PokemonService.listPokemonsDetails(pokemonsURL)
         );
 
-        setPokemon(listPokemonsDetails);
+        setAllPokemons(listPokemonsDetails);
       } catch (error) {
         console.log(error);
       }
@@ -33,13 +33,13 @@ export default function App() {
     loadPokemons();
   }, []);
 
-  console.log(pokemon);
-
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyles />
       <Container>
-        <PokemonCard />
+        {allPokemons.map((pokemon) => (
+          <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        ))}
       </Container>
     </ThemeProvider>
   );

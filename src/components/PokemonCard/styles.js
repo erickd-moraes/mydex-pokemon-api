@@ -8,6 +8,13 @@ export const Card = styled.a`
   padding: 24px;
   margin: 0 16px;
   margin-bottom: 32px;
+  border-radius: 24px;
+  border: 3px solid transparent;
+  transition: transform .2s ease-in;
+
+  &:hover {
+    transform: scale(1.05)
+  }
 
   &::after {
     content: "";
@@ -17,7 +24,7 @@ export const Card = styled.a`
     transform: translateX(50%);
     width: 100%;
     height: 100%;
-    background: ${({ theme }) => theme.colors.pokemonTypes.fire};
+    background: ${({ theme, backgroundColor }) => theme.colors.pokemonTypes[backgroundColor]};
     border-radius: 24px;
     opacity: 0.5;
     z-index: -1;
@@ -31,30 +38,32 @@ export const Card = styled.a`
 
   strong {
     font-size: 20px;
+    text-transform: capitalize;
     margin-top: 24px;
+    color: ${({ theme }) => theme.colors.gray.light};
   }
 
   .type {
     display: flex;
     justify-content: space-between;
     margin-top: 16px;
+  }
+`;
 
-    span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 50%;
-      height: 32px;
-      font-size: 12px;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: #FFF;
-      background: ${({ theme }) => theme.colors.pokemonTypes.fire};
-      border-radius: 8px;
+export const Type = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 32px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #FFF;
+  background: ${({ theme, typeNameColor }) => theme.colors.pokemonTypes[typeNameColor]};
+  border-radius: 8px;
 
-      &:first-of-type {
-        margin-right: 16px;
-      }
-    }
+  &:first-of-type {
+    margin-right: 16px;
   }
 `;

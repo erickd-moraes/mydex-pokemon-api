@@ -1,15 +1,44 @@
-import { Card } from './styles';
+import PropTypes from 'prop-types';
 
-export default function PokemonCard() {
+import { Card, Type } from './styles';
+
+export default function PokemonCard({ pokemon }) {
   return (
-    <Card href="/">
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png" alt="charmander" />
+    <Card
+      href={`/${pokemon.name}`}
+      backgroundColor={pokemon.types[0].type.name}
+    >
+      <img
+        src={pokemon.sprites.other['official-artwork'].front_default}
+        alt={pokemon.name}
+      />
 
-      <strong>Charmander</strong>
+      <strong>{pokemon.name}</strong>
 
       <div className="type">
-        <span>Fire</span>
+        {pokemon.types.map((type) => (
+          <Type
+            key={type.slot}
+            typeNameColor={type.type.name}
+          >
+            {type.type.name}
+          </Type>
+        ))}
       </div>
     </Card>
   );
 }
+
+PokemonCard.propTypes = {
+  pokemon: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    sprites: PropTypes.shape({
+      other: PropTypes.shape({
+        'official-artwork': PropTypes.shape({
+          front_default: PropTypes.string.isRequired,
+        }),
+      }),
+    }),
+    types: PropTypes.arrayOf(PropTypes.shape()),
+  }).isRequired,
+};
