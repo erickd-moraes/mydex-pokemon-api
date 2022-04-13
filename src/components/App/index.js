@@ -6,6 +6,7 @@ import GlobalStyles from '../../assets/styles/global';
 import defaultTheme from '../../assets/styles/themes/default';
 
 import PokemonService from '../../services/PokemonService';
+import Header from '../Header';
 
 import PokemonCard from '../PokemonCard';
 
@@ -36,6 +37,7 @@ export default function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyles />
+      <Header />
       <Container>
         {allPokemons.map((pokemon) => (
           <PokemonCard key={pokemon.id} pokemon={pokemon} />

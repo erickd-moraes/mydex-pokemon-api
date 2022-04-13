@@ -33,14 +33,13 @@ export const Card = styled.a`
   img {
     width: 100%;
     padding-bottom: 16px;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.gray.light};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.gray[100]};
   }
 
   strong {
     font-size: 20px;
     text-transform: capitalize;
     margin-top: 24px;
-    color: ${({ theme }) => theme.colors.gray.light};
   }
 
   .type {

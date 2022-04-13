@@ -1,8 +1,13 @@
 export default {
   colors: {
+    primary: {
+      main: '#1B5CAC',
+    },
     gray: {
-      light: '#F8F8F8',
-      dark: '#3F3F3F',
+      100: '#FFFEFE',
+      200: '#F8F8F8',
+      300: '#727272',
+      400: '#3F3F3F',
     },
     pokemonTypes: {
       normal: '#A8A878',
@@ -25,4 +30,5 @@ export default {
       fairy: '#EE99AC',
     },
   },
+  boxShadow: '6px 4px 25px rgba(34, 34, 36, 0.1)',
 };
