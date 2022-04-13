@@ -4,7 +4,7 @@ export default {
       light: '#F8F8F8',
       dark: '#3F3F3F',
     },
-    typesPokemon: {
+    pokemonTypes: {
       normal: '#A8A878',
       fighting: '#C02038',
       flying: '#A890F0',
