@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import PokemonService from '../../services/PokemonService';
-import PokemonCard from '../../components/PokemonCard';
 
-import arrow from '../../assets/images/icons/arrow.svg';
+import PokemonCard from '../../components/PokemonCard';
+import Navigation from '../../components/Navigation';
 
 import {
   Container, FindPokemons, ListPokemonsContainer, Filter,
@@ -36,7 +36,7 @@ export default function Home() {
     loadPokemons();
   }, []);
 
-  async function handlePreviousLoadPokemons() {
+  const handlePreviousLoadPokemons = async () => {
     if (!previousPokemons) return;
     const getURLSearch = new URL(previousPokemons);
 
@@ -52,9 +52,9 @@ export default function Home() {
     setAllPokemons(listPrevPokemonsDetails);
     setPreviousPokemons(listPrevPokemons.previous);
     setNextPokemons(listPrevPokemons.next);
-  }
+  };
 
-  async function handleNextLoadPokemons() {
+  const handleNextLoadPokemons = async () => {
     const getURLSearch = new URL(nextPokemons);
 
     const listNextPokemons = (
@@ -69,21 +69,18 @@ export default function Home() {
     setAllPokemons(listNextPokemonsDetails);
     setNextPokemons(listNextPokemons.next);
     setPreviousPokemons(listNextPokemons.previous);
-  }
+  };
 
   return (
     <Container>
       <FindPokemons>
         <input type="text" placeholder="Procure pelo nome do seu Pokémon..." />
 
-        <div className="navigation">
-          <button type="button" onClick={handlePreviousLoadPokemons}>
-            <img src={arrow} alt="seta pra esquerda" />
-          </button>
-          <button type="button" onClick={handleNextLoadPokemons}>
-            <img src={arrow} alt="seta pra direita" />
-          </button>
-        </div>
+        <Navigation
+          disabled={!previousPokemons}
+          prevNavigation={handlePreviousLoadPokemons}
+          nextNavigation={handleNextLoadPokemons}
+        />
       </FindPokemons>
 
       <div className="content">
