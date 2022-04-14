@@ -24,9 +24,9 @@ export const FindPokemons = styled.section`
     padding: 0 16px;
     background: ${({ theme }) => theme.colors.gray[100]};
     box-shadow: ${({ theme }) => theme.boxShadow};
-    border-radius: 32px;
+    border-radius: ${({ theme }) => `${theme.largeBorderRadius}px`};
     border: 2px solid transparent;
-    transition: border-color .2s ease-in;
+    transition: border-color ${({ theme }) => theme.transition};
     outline: none;
 
     &:focus,
@@ -44,7 +44,7 @@ export const ListPokemonsContainer = styled.section`
   max-width: 1376px;
   background: ${({ theme }) => theme.colors.gray[100]};
   box-shadow: ${({ theme }) => theme.boxShadow};
-  border-radius: 32px;
+  border-radius: ${({ theme }) => `${theme.largeBorderRadius}px`};
   padding: 64px 32px;
 `;
 
@@ -53,6 +53,6 @@ export const Filter = styled.section`
   height: 600px;
   background: ${({ theme }) => theme.colors.gray[100]};
   box-shadow: ${({ theme }) => theme.boxShadow};
-  border-radius: 32px;
+  border-radius: ${({ theme }) => `${theme.largeBorderRadius}px`};
   margin-left: 60px;
 `;

@@ -11,18 +11,18 @@ export const Container = styled.nav`
       height: 48px;
       background: ${({ theme }) => theme.colors.gray[100]};
       border: none;
-      border-radius: 12px;
+      border-radius: ${({ theme }) => `${theme.smallBorderRadius}px`};
       box-shadow: ${({ theme }) => theme.boxShadow};
-      transition: all .2s ease-in;
+      transition: transform ${({ theme }) => theme.transition};
 
       &:hover {
-        transform: scale(1.05);
+        transform: ${({ theme }) => theme.moreScale};
       }
 
       &:disabled {
         opacity: 0.5;
         cursor: default;
-        transform: scale(0.8);
+        transform: ${({ theme }) => theme.lessScale};
       }
 
       &:last-of-type {

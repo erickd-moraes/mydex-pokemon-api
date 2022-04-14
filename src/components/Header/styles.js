@@ -7,5 +7,5 @@ export const Container = styled.header`
   margin-top: 32px;
   background: ${({ theme }) => theme.colors.gray[100]};
   box-shadow: ${({ theme }) => theme.boxShadow};
-  border-radius: 32px;
+  border-radius: ${({ theme }) => `${theme.largeBorderRadius}px`};
 `;

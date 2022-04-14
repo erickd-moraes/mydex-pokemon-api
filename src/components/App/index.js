@@ -6,6 +6,7 @@ import defaultTheme from '../../assets/styles/themes/default';
 
 import Header from '../Header';
 import Routes from '../../Routes';
+import Footer from '../Footer';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <GlobalStyles />
         <Header />
         <Routes />
+        <Footer />
       </ThemeProvider>
     </BrowserRouter>
   );

@@ -31,4 +31,10 @@ export default {
     },
   },
   boxShadow: '6px 4px 25px rgba(34, 34, 36, 0.1)',
+  transition: '.2s ease-in',
+  moreScale: 'scale(1.1)',
+  lessScale: 'scale(0.8)',
+  smallBorderRadius: 12,
+  mediumBorderRadius: 24,
+  largeBorderRadius: 32,
 };

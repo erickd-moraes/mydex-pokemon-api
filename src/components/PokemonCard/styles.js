@@ -8,13 +8,11 @@ export const Card = styled.div`
   padding: 24px;
   margin: 0 16px;
   margin-bottom: 32px;
-  border-radius: 24px;
-  border: 3px solid transparent;
-  transition: transform .2s ease-in;
+  transition: transform ${({ theme }) => theme.transition};
   z-index: 10;
 
   &:hover {
-    transform: scale(1.05)
+    transform: ${({ theme }) => theme.moreScale};
   }
 
   &::after {
@@ -26,7 +24,7 @@ export const Card = styled.div`
     width: 100%;
     height: 100%;
     background: ${({ theme, backgroundColor }) => theme.colors.pokemonTypes[backgroundColor]};
-    border-radius: 24px;
+    border-radius: ${({ theme }) => `${theme.mediumBorderRadius}px`};
     opacity: 0.5;
     z-index: -1;
   }
@@ -61,7 +59,7 @@ export const Type = styled.span`
   text-transform: uppercase;
   color: #FFF;
   background: ${({ theme, typeNameColor }) => theme.colors.pokemonTypes[typeNameColor]};
-  border-radius: 8px;
+  border-radius: ${({ theme }) => `${theme.smallBorderRadius}px`};
 
   &:first-of-type {
     margin-right: 16px;
