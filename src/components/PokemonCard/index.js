@@ -1,31 +1,31 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { Card, Type } from './styles';
 
 export default function PokemonCard({ pokemon }) {
   return (
-    <Card
-      href={`/${pokemon.name}`}
-      backgroundColor={pokemon.types[0].type.name}
-    >
-      <img
-        src={pokemon.sprites.other['official-artwork'].front_default}
-        alt={pokemon.name}
-      />
+    <Link to={`/${pokemon.name}`}>
+      <Card backgroundColor={pokemon.types[0].type.name}>
+        <img
+          src={pokemon.sprites.other['official-artwork'].front_default}
+          alt={pokemon.name}
+        />
 
-      <strong>{pokemon.name}</strong>
+        <strong>{pokemon.name}</strong>
 
-      <div className="type">
-        {pokemon.types.map((type) => (
-          <Type
-            key={type.slot}
-            typeNameColor={type.type.name}
-          >
-            {type.type.name}
-          </Type>
-        ))}
-      </div>
-    </Card>
+        <div className="type">
+          {pokemon.types.map((type) => (
+            <Type
+              key={type.slot}
+              typeNameColor={type.type.name}
+            >
+              {type.type.name}
+            </Type>
+          ))}
+        </div>
+      </Card>
+    </Link>
   );
 }
 

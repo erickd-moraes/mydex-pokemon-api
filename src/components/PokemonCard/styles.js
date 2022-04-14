@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Card = styled.a`
+export const Card = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -11,6 +11,7 @@ export const Card = styled.a`
   border-radius: 24px;
   border: 3px solid transparent;
   transition: transform .2s ease-in;
+  z-index: 10;
 
   &:hover {
     transform: scale(1.05)
