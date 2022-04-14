@@ -3,11 +3,9 @@ import { useEffect, useState } from 'react';
 import PokemonService from '../../services/PokemonService';
 
 import PokemonCard from '../../components/PokemonCard';
-import Navigation from '../../components/Navigation';
 
-import {
-  Container, FindPokemons, ListPokemonsContainer, Filter,
-} from './styles';
+import { Container, ListPokemonsContainer, Filter } from './styles';
+import SearchHeader from '../../components/SearchHeader';
 
 export default function Home() {
   const [allPokemons, setAllPokemons] = useState([]);
@@ -73,15 +71,11 @@ export default function Home() {
 
   return (
     <Container>
-      <FindPokemons>
-        <input type="text" placeholder="Procure pelo nome do seu Pokémon..." />
-
-        <Navigation
-          disabled={!previousPokemons}
-          prevNavigation={handlePreviousLoadPokemons}
-          nextNavigation={handleNextLoadPokemons}
-        />
-      </FindPokemons>
+      <SearchHeader
+        disabled={!previousPokemons}
+        prevNavigation={handlePreviousLoadPokemons}
+        nextNavigation={handleNextLoadPokemons}
+      />
 
       <div className="content">
         <ListPokemonsContainer>
