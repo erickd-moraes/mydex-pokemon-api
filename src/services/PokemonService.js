@@ -5,8 +5,8 @@ class PokemonService {
     this.HttpClient = new HttpClient('https://pokeapi.co/api/v2');
   }
 
-  async listPokemons(limit = 20, offset = 0) {
-    return this.HttpClient.get(`/pokemon?limit=${limit}&offset=${offset}`);
+  async listPokemons(path = '/pokemon') {
+    return this.HttpClient.get(path);
   }
 
   async listPokemonsDetails(pokemon) {
