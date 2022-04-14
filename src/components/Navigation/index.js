@@ -1,4 +1,5 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
+
 import arrow from '../../assets/images/icons/arrow.svg';
 
 import { Container } from './styles';
@@ -15,3 +16,9 @@ export default function Navigation({ disabled, prevNavigation, nextNavigation })
     </Container>
   );
 }
+
+Navigation.propTypes = {
+  prevNavigation: PropTypes.func.isRequired,
+  nextNavigation: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired,
+};
