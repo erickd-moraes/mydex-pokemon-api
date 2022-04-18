@@ -5,16 +5,21 @@ import PokemonService from '../../services/PokemonService';
 import PokemonCard from '../../components/PokemonCard';
 
 import { Container, ListPokemonsContainer, Filter } from './styles';
+
 import SearchHeader from '../../components/SearchHeader';
+import Loader from '../../components/Loader';
 
 export default function Home() {
   const [allPokemons, setAllPokemons] = useState([]);
   const [previousPokemons, setPreviousPokemons] = useState([]);
   const [nextPokemons, setNextPokemons] = useState([]);
+  const [isloading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function loadPokemons() {
       try {
+        setIsLoading(true);
+
         const listPokemons = await PokemonService.listPokemons();
         const pokemonsURL = listPokemons.results;
 
@@ -28,6 +33,8 @@ export default function Home() {
         setAllPokemons(listPokemonsDetails);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -35,6 +42,8 @@ export default function Home() {
   }, []);
 
   const handlePreviousLoadPokemons = async () => {
+    setIsLoading(true);
+
     if (!previousPokemons) return;
     const getURLSearch = new URL(previousPokemons);
 
@@ -50,9 +59,12 @@ export default function Home() {
     setAllPokemons(listPrevPokemonsDetails);
     setPreviousPokemons(listPrevPokemons.previous);
     setNextPokemons(listPrevPokemons.next);
+    setIsLoading(false);
   };
 
   const handleNextLoadPokemons = async () => {
+    setIsLoading(true);
+
     const getURLSearch = new URL(nextPokemons);
 
     const listNextPokemons = (
@@ -67,10 +79,13 @@ export default function Home() {
     setAllPokemons(listNextPokemonsDetails);
     setNextPokemons(listNextPokemons.next);
     setPreviousPokemons(listNextPokemons.previous);
+    setIsLoading(false);
   };
 
   return (
     <Container>
+      <Loader isLoading={isloading} />
+
       <SearchHeader
         disabled={!previousPokemons}
         prevNavigation={handlePreviousLoadPokemons}
