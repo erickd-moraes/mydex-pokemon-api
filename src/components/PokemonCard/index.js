@@ -3,14 +3,28 @@ import { Link } from 'react-router-dom';
 
 import { Card, Type } from './styles';
 
+import thumbError from '../../assets/images/thumb-error.svg';
+
 export default function PokemonCard({ pokemon }) {
   return (
     <Link to={`/${pokemon.name}`}>
       <Card backgroundColor={pokemon.types[0].type.name}>
-        <img
-          src={pokemon.sprites.other['official-artwork'].front_default}
-          alt={pokemon.name}
-        />
+
+        {
+          pokemon.sprites.other['official-artwork'].front_default
+            ? (
+              <img
+                src={pokemon.sprites.other['official-artwork'].front_default}
+                alt={pokemon.name}
+              />
+            )
+            : (
+              <img
+                src={thumbError}
+                alt="thumb não encontrada"
+              />
+            )
+        }
 
         <strong>{pokemon.name}</strong>
 
@@ -35,7 +49,7 @@ PokemonCard.propTypes = {
     sprites: PropTypes.shape({
       other: PropTypes.shape({
         'official-artwork': PropTypes.shape({
-          front_default: PropTypes.string.isRequired,
+          front_default: PropTypes.string,
         }),
       }),
     }),
