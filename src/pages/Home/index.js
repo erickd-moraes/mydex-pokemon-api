@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import PokemonService from '../../services/PokemonService';
 
 import PokemonCard from '../../components/PokemonCard';
+import SearchHeader from '../../components/SearchHeader';
+import SearchFooter from '../../components/SearchFooter';
+import Loader from '../../components/Loader';
 
 import { Container, ListPokemonsContainer, Filter } from './styles';
-
-import SearchHeader from '../../components/SearchHeader';
-import Loader from '../../components/Loader';
 
 export default function Home() {
   const [allPokemons, setAllPokemons] = useState([]);
@@ -101,6 +101,12 @@ export default function Home() {
 
         <Filter />
       </div>
+
+      <SearchFooter
+        disabled={!previousPokemons}
+        prevNavigation={handlePreviousLoadPokemons}
+        nextNavigation={handleNextLoadPokemons}
+      />
     </Container>
   );
 }
