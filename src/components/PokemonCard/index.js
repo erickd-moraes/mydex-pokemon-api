@@ -6,25 +6,17 @@ import { Card, Type } from './styles';
 import thumbError from '../../assets/images/thumb-error.svg';
 
 export default function PokemonCard({ pokemon }) {
-  return (
-    <Link to={`/${pokemon.name}`}>
-      <Card backgroundColor={pokemon.types[0].type.name}>
+  const thumbPokemon = pokemon.sprites.other['official-artwork'].front_default;
 
-        {
-          pokemon.sprites.other['official-artwork'].front_default
-            ? (
-              <img
-                src={pokemon.sprites.other['official-artwork'].front_default}
-                alt={pokemon.name}
-              />
-            )
-            : (
-              <img
-                src={thumbError}
-                alt="thumb não encontrada"
-              />
-            )
-        }
+  return (
+    <Link to={`/pokedex/${pokemon.name}`}>
+      <Card backgroundColor={pokemon.types[0].type.name}>
+        <img
+          width="176"
+          height="186"
+          src={thumbPokemon || thumbError}
+          alt={pokemon.name}
+        />
 
         <strong>{pokemon.name}</strong>
 

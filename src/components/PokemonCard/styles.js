@@ -30,7 +30,6 @@ export const Card = styled.div`
   }
 
   img {
-    width: 100%;
     padding-bottom: 16px;
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray[100]};
   }
