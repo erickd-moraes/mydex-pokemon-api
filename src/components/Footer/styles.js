@@ -5,11 +5,9 @@ export const Container = styled.footer`
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  height: 100px;
+  height: 96px;
   padding: 0 60px;
   background: ${({ theme }) => theme.colors.primary.main};
-  border-top-left-radius: ${({ theme }) => `${theme.largeBorderRadius}px`};
-  border-top-right-radius: ${({ theme }) => `${theme.largeBorderRadius}px`};
 
   span {
     color: ${({ theme }) => theme.colors.gray[100]};

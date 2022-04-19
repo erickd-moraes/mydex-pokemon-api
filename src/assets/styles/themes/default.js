@@ -1,7 +1,10 @@
 export default {
   colors: {
     primary: {
-      main: '#1B5CAC',
+      main: '#003A70',
+    },
+    secondary: {
+      main: '#FFCB05',
     },
     gray: {
       100: '#FFFEFE',

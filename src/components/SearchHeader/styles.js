@@ -27,7 +27,7 @@ export const Container = styled.nav`
 
       &:focus,
       &:hover {
-        border-color: ${({ theme }) => theme.colors.primary.main};
+        border-color: ${({ theme }) => theme.colors.secondary.main};
       }
     }
 
