@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -8,11 +7,7 @@ import search from '../../assets/images/icons/search.svg';
 
 import { Container } from './styles';
 
-export default function SearchHeader({
-  disabled,
-  prevNavigation,
-  nextNavigation,
-}) {
+export default function SearchHeader() {
   const history = useHistory();
 
   const [name, setName] = useState('');
@@ -41,17 +36,7 @@ export default function SearchHeader({
         </button>
       </form>
 
-      <Navigation
-        disabled={disabled}
-        prevNavigation={prevNavigation}
-        nextNavigation={nextNavigation}
-      />
+      <Navigation />
     </Container>
   );
 }
-
-SearchHeader.propTypes = {
-  prevNavigation: PropTypes.func.isRequired,
-  nextNavigation: PropTypes.func.isRequired,
-  disabled: PropTypes.bool.isRequired,
-};

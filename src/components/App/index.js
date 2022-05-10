@@ -8,15 +8,19 @@ import Header from '../Header';
 import Routes from '../../Routes';
 import Footer from '../Footer';
 
+import { PokemonProvider } from '../../context/PokemonContext';
+
 export default function App() {
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={defaultTheme}>
-        <GlobalStyles />
-        <Header />
-        <Routes />
-        <Footer />
-      </ThemeProvider>
-    </BrowserRouter>
+    <PokemonProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={defaultTheme}>
+          <GlobalStyles />
+          <Header />
+          <Routes />
+          <Footer />
+        </ThemeProvider>
+      </BrowserRouter>
+    </PokemonProvider>
   );
 }
